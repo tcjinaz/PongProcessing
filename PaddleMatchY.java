@@ -1,11 +1,11 @@
 import processing.core.*;
 
-public class PaddleRandom extends Paddle {
+public class PaddleMatchY extends Paddle {
 
   int count;
   int upORdown;
 
-  PaddleRandom( PApplet parent, 
+  PaddleMatchY( PApplet parent, 
     boolean playLeft, 
     int maxX, int maxY, 
     int sizeX, int sizeY,
@@ -19,26 +19,22 @@ public class PaddleRandom extends Paddle {
   public void reset() {
     super.reset();
     count = 0;
-    upORdown = 0;
+    upORdown = 1;
   }
 
   // tell paddle where the ball is, update paddle position
   public void update ( int ballX, int ballY ) {
 
-    if ( count++ % 10 == 0 ) {
-      double d = Math.random();
-      if ( d < 0.4 ) {
-        upORdown = -1;
-      } else if ( d > 0.6 ) {
-        upORdown = 1;
-      } else {
-        upORdown = 0;
-      }
+    if ( Math.abs(y - ballY) < half(sizeY) ) {
+      upORdown = 0;
+    } else if ( y < ballY ) {
+      upORdown = 1;
+    } else {
+      upORdown = -1;
     }
-
     //move paddle
     super.move( upORdown );
-//    System.out.println( " PaddleRandom  " + upORdown );
+//    System.out.println( " PaddleMatchY  " + upORdown );
   }  //  end update
 
-}  //  end class PaddleRandom
+}  //  end class PaddleMatchY

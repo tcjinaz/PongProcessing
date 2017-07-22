@@ -8,8 +8,10 @@ public class Paddle1 extends Paddle {
   Paddle1( PApplet parent, 
            boolean playLeft,
            int maxX, int maxY,
-           int sizeX, int sizeY ) {
-    super( parent, playLeft, maxX, maxY, sizeX, sizeY );  //initialize superclass member
+           int sizeX, int sizeY,
+           int speed
+           ) {
+    super( parent, playLeft, maxX, maxY, sizeX, sizeY, speed );  //initialize superclass member
 
     reset();
   }  //  end paddle ctor
@@ -41,7 +43,7 @@ public class Paddle1 extends Paddle {
 
         // will ball hit paddle?
         int diffY = b - super.y;
-        System.out.println( "diffY " + diffY + " " + super.half(sizeY) ); //<>//
+//        System.out.println( "diffY " + diffY + " " + super.half(sizeY) );
         if ( Math.abs(diffY) < super.half(sizeY) ) {
           upORdown = 0;  // should hit paddle
         } else if ( diffY > 0 ) {
@@ -52,7 +54,7 @@ public class Paddle1 extends Paddle {
 
         //move paddle
         super.move( upORdown );
-        System.out.println( ballY + " " + y + " " + upORdown + " " + b );
+//        System.out.println( ballY + " " + y + " " + upORdown + " " + b );
       }
     }
     lastBallX = ballX;
