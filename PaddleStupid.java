@@ -25,7 +25,7 @@ public class PaddleStupid extends Paddle {
   // tell paddle where the ball is, update paddle position
   public void update ( int ballX, int ballY ) {
 
-    if ( count++ % 10 == 0 ) {
+    if ( count++ % 10 == 0 ) { //<>//
       if ( y <= half(sizeY) ) {
         upORdown = 1;
       } else if ( y >= maxY - sizeY ) {

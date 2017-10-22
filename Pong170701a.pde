@@ -34,7 +34,7 @@ void settings() {
 
 ////////////////////////////////////////////////////////////
 void setup() {
-  frameRate( 40 );  // update rate, frames per second
+  frameRate( 80 );  // update rate, frames per second
 
   ball = createShape( ELLIPSE, 0, 0, 10, 10 );
   ball.beginShape();
@@ -52,9 +52,9 @@ void setup() {
   angle = newAngle();
   tableCrossCount = 0;
 
-//  rightPaddle = new PaddleStupid( this, false, MaxX, MaxY, PaddleWidthRight, PaddleHeightRight, 6 );
+  rightPaddle = new PaddleStupid( this, false, MaxX, MaxY, PaddleWidthRight, PaddleHeightRight, 6 );
 //  rightPaddle = new PaddleRandom( this, false, MaxX, MaxY, PaddleWidthRight, PaddleHeightRight, 6 );
-  rightPaddle = new PaddleMatchY( this, false, MaxX, MaxY, PaddleWidthRight, PaddleHeightRight, 8 );
+//  rightPaddle = new PaddleMatchY( this, false, MaxX, MaxY, PaddleWidthRight, PaddleHeightRight, 8 );
 //  rightPaddle = new Paddle1( this, false, MaxX, MaxY, PaddleWidthRight, PaddleHeightRight, 8 );
 //  leftPaddle = new PaddleStupid( this, true, MaxX, MaxY, PaddleWidthLeft, PaddleHeightLeft, 8 );
 //  leftPaddle = new PaddleRandom( this, true, MaxX, MaxY, PaddleWidthLeft, PaddleHeightLeft, 8 );
@@ -131,6 +131,7 @@ boolean moveBall () {
   //  println( angle, "  X", bX, "  ", dX, "  Y ", bY, " ", dY );
   if ( (hrp = rightPaddle.hitPaddle( bX, bY, dirX )) == -1 ) {
     // right paddle missed, left scores
+    //System.out.println("right missed ball "+bX+","+bY+"  paddle "+rightPaddle.getX()+","+rightPaddle.getY() );
     leftPaddle.score();
     scored = true;
     rightPaddle.resetServe();

@@ -133,4 +133,8 @@ public abstract class Paddle {
     // change paddle size ion Y axis
     sizeY = h;
   }
+  
+  public int getX() { return x; }
+  public int getY() { return y; }
+  
 }  //  end class Paddle
